@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeChanger : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class VolumeChanger : MonoBehaviour
     private const int MaxVolume = 0;
 
     [SerializeField] private AudioMixerGroup _mixer;
-    [SerializeField] private string _explosedParameterName;
+    [SerializeField] private Slider _slider;
 
     private bool _isEnable;
     private float _volume;
@@ -17,7 +18,17 @@ public class VolumeChanger : MonoBehaviour
         _isEnable = true;
         _volume = 0;
 
-        _mixer.audioMixer.SetFloat(_explosedParameterName, MinVolume);
+        _mixer.audioMixer.SetFloat(_mixer.name, MinVolume);
+    }
+
+    private void OnEnable()
+    {
+        _slider.onValueChanged.AddListener(ChangeVolume);
+    }
+
+    private void OnDisable()
+    {
+        _slider.onValueChanged.RemoveListener(ChangeVolume);
     }
 
     public void ChangeVolume(float volume)
@@ -25,9 +36,9 @@ public class VolumeChanger : MonoBehaviour
         _volume = volume;
 
         if(_isEnable)
-            _mixer.audioMixer.SetFloat(_explosedParameterName, Mathf.Lerp(MinVolume, MaxVolume, _volume));
+            _mixer.audioMixer.SetFloat(_mixer.name, Mathf.Lerp(MinVolume, MaxVolume, _volume));
         else
-            _mixer.audioMixer.SetFloat(_explosedParameterName, MinVolume);
+            _mixer.audioMixer.SetFloat(_mixer.name, MinVolume);
     }
 
     public void SoundEnable(bool isEnable)
@@ -35,8 +46,8 @@ public class VolumeChanger : MonoBehaviour
         _isEnable = isEnable;
 
         if (_isEnable)
-            _mixer.audioMixer.SetFloat(_explosedParameterName, Mathf.Lerp(MinVolume, MaxVolume, _volume));
+            _mixer.audioMixer.SetFloat(_mixer.name, Mathf.Lerp(MinVolume, MaxVolume, _volume));
         else
-            _mixer.audioMixer.SetFloat(_explosedParameterName, MinVolume);
+            _mixer.audioMixer.SetFloat(_mixer.name, MinVolume);
     }
 }
