@@ -741,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 3493015491349531160, guid: 7432fd276d5bd8c4f8d56c0418b32c8a, type: 2}
+  _explosedParameterName: SoundVolume
 --- !u!1 &240021006
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259534559}
-  - component: {fileID: 259534558}
+  - component: {fileID: 259534560}
   m_Layer: 0
   m_Name: MasterVolume
   m_TagString: Untagged
@@ -869,19 +870,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &259534558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259534557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42fe0ee54185d294bab20e6516fe3df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mixer: {fileID: 24300002, guid: 7432fd276d5bd8c4f8d56c0418b32c8a, type: 2}
 --- !u!4 &259534559
 Transform:
   m_ObjectHideFlags: 0
@@ -899,6 +887,20 @@ Transform:
   - {fileID: 177470901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259534560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259534557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000bf43bd81b8a3449500e48db5ae2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixer: {fileID: 24300002, guid: 7432fd276d5bd8c4f8d56c0418b32c8a, type: 2}
+  _explosedParameterName: MasterVolume
 --- !u!1 &361726813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1801,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1743117170}
-        m_TargetAssemblyTypeName: BackgroundMusicVolumeChanger, Assembly-CSharp
+        m_TargetAssemblyTypeName: VolumeChanger, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
@@ -3126,10 +3128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1743117167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c28688adcf84f44abdae6bdaf99bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 000bf43bd81b8a3449500e48db5ae2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 4425960375917610313, guid: 7432fd276d5bd8c4f8d56c0418b32c8a, type: 2}
+  _explosedParameterName: BackgroundMusicVolume
 --- !u!1 &1874365636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,8 +3464,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 259534558}
-        m_TargetAssemblyTypeName: MasterVolumeChanger, Assembly-CSharp
+      - m_Target: {fileID: 259534560}
+        m_TargetAssemblyTypeName: VolumeChanger, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 0
         m_Arguments:
