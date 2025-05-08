@@ -45,9 +45,6 @@ public class VolumeChanger : MonoBehaviour
     {
         _isEnable = isEnable;
 
-        if (_isEnable)
-            _mixer.audioMixer.SetFloat(_mixer.name, Mathf.Lerp(MinVolume, MaxVolume, _volume));
-        else
-            _mixer.audioMixer.SetFloat(_mixer.name, MinVolume);
+        ChangeVolume(_volume);
     }
 }
