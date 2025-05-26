@@ -387,8 +387,12 @@ GameObject:
   m_Component:
   - component: {fileID: 177470901}
   - component: {fileID: 177470900}
-  - component: {fileID: 177470902}
   - component: {fileID: 177470903}
+  - component: {fileID: 177470907}
+  - component: {fileID: 177470902}
+  - component: {fileID: 177470906}
+  - component: {fileID: 177470905}
+  - component: {fileID: 177470904}
   m_Layer: 0
   m_Name: Sounds
   m_TagString: Untagged
@@ -519,12 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9e529bc23125469d03ffe5ea999d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstButton: {fileID: 120193604}
-  _secondButton: {fileID: 2090201123}
-  _thirdButton: {fileID: 1296203285}
-  _firstSound: {fileID: 8300000, guid: f2681213d638ff54c9a3a3695e598cb6, type: 3}
-  _secondSound: {fileID: 8300000, guid: ceffbdb4c82b01b42b834ca6a80dc23c, type: 3}
-  _thirdSound: {fileID: 8300000, guid: 31482a819f8202c4ea8fcb78d896b123, type: 3}
+  _buttonSoundPlayers:
+  - {fileID: 177470906}
+  - {fileID: 177470905}
+  - {fileID: 177470904}
 --- !u!114 &177470903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +541,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mixer: {fileID: 3493015491349531160, guid: 7432fd276d5bd8c4f8d56c0418b32c8a, type: 2}
   _slider: {fileID: 1129440405}
+--- !u!114 &177470904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177470897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0c534b3b200b8408d3cefaf22302f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1296203285}
+  _sound: {fileID: 8300000, guid: 31482a819f8202c4ea8fcb78d896b123, type: 3}
+--- !u!114 &177470905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177470897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0c534b3b200b8408d3cefaf22302f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 2090201123}
+  _sound: {fileID: 8300000, guid: ceffbdb4c82b01b42b834ca6a80dc23c, type: 3}
+--- !u!114 &177470906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177470897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0c534b3b200b8408d3cefaf22302f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 120193604}
+  _sound: {fileID: 8300000, guid: f2681213d638ff54c9a3a3695e598cb6, type: 3}
+--- !u!114 &177470907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177470897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9adf35383c9154ca95af9e0199cd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggle: {fileID: 1874365638}
+  _volumeChanger: {fileID: 177470903}
 --- !u!1 &240021006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,19 +3036,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 177470903}
-        m_TargetAssemblyTypeName: SoundVolumeChanger, Assembly-CSharp
-        m_MethodName: SoundEnable
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &1910403754
 GameObject:

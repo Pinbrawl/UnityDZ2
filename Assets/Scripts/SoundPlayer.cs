@@ -1,14 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundPlayer : MonoBehaviour
 {
-    [SerializeField] private Button _firstButton;
-    [SerializeField] private Button _secondButton;
-    [SerializeField] private Button _thirdButton;
-    [SerializeField] private AudioClip _firstSound;
-    [SerializeField] private AudioClip _secondSound;
-    [SerializeField] private AudioClip _thirdSound;
+    [SerializeField] private List<ButtonSoundPlayer> _buttonSoundPlayers;
 
     private AudioSource _audioSource;
 
@@ -19,26 +14,19 @@ public class SoundPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        _firstButton.onClick.AddListener(PlayFirst);
-        _secondButton.onClick.AddListener(PlaySecond);
-        _thirdButton.onClick.AddListener(PlayThird);
+        foreach (ButtonSoundPlayer buttonSoundPlayer in _buttonSoundPlayers)
+            buttonSoundPlayer.Playing += Play;
     }
 
-    public void PlayFirst()
+    private void OnDisable()
     {
-        _audioSource.Stop();
-        _audioSource.PlayOneShot(_firstSound);
+        foreach (ButtonSoundPlayer buttonSoundPlayer in _buttonSoundPlayers)
+            buttonSoundPlayer.Playing -= Play;
     }
 
-    public void PlaySecond()
+    public void Play(AudioClip sound)
     {
         _audioSource.Stop();
-        _audioSource.PlayOneShot(_secondSound);
-    }
-
-    public void PlayThird()
-    {
-        _audioSource.Stop();
-        _audioSource.PlayOneShot(_thirdSound);
+        _audioSource.PlayOneShot(sound);
     }
 }
